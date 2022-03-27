@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Pokemon finder</title>
+
+  <!-- jQuery library -->
+  <script src="scripts/libs/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="styles/bootstrap.min.css" />
+  <script src="scripts/libs/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Pokemon finder</h1>
+        <h5>El que quiere Pokemons, que los busque</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="input-group mb-3">
+          <input type="text" id="searchBox" class="form-control" placeholder="Ingrese el nombre a buscar">
+          <button type="button" onclick="search()" class="btn btn-secondary">Buscar</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div id="searchResults"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">Hecho por Matias S. Flores</div>
+      <div class="col">
+        <a href="https://github.com/matisflores/test-pokeapi-js" class="btn btn-secondary">Link a mi repo</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="env.js"></script>
+  <script src="scripts/libs/WebApp.js"></script>
+  <script src="scripts/libs/WebApp.Parser.js"></script>
+  <script src="scripts/pokeapiClient.js"></script>
+  <script src="scripts/functions.js"></script>
+
+  <script id="tpl-searchResults" type="html/template">
+      <h3>Resultados de la b&uacute;squeda: {{ qty }}</h3>
+
+      {% for pokemon in pokemons %}
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ pokemon.image }}" class="img-fluid rounded-start mx-auto d-block" alt="">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title text-capitalize">{{ pokemon.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </script>
+</body>
+</html>
